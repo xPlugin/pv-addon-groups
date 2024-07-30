@@ -30,7 +30,6 @@ class GroupsManager(
     val sourceByPlayer: MutableMap<UUID, ServerDirectSource> = ConcurrentHashMap()
 
 //    val groupByPlayerCache: MutableMap<@Serializable(with = UUIDSerializer::class) UUID, UUID> = ConcurrentHashMap()
-
     fun join(player: VoicePlayer, group: Group) {
         leave(player.instance.uuid)
         initSource(player, group)
