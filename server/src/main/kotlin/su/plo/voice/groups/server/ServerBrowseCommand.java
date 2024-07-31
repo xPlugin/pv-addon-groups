@@ -12,6 +12,6 @@ public class ServerBrowseCommand extends BrowseCommand {
 
     @Override
     public void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments) {
-        System.out.println("Server Hooked");
+        //TODO: PACKETS
     }
 }
