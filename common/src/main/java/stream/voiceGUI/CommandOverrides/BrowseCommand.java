@@ -137,5 +137,5 @@ public abstract class BrowseCommand extends SubCommand {
         return permission;
     }
 
-    public abstract void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments, List<List<Group> chunked>);
+    public abstract void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments, List<List<Group>> chunked);
 }
