@@ -136,6 +136,7 @@ abstract class GroupsAddon : AddonInitializer {
             .addSubCommand(::UnsetCommand)
             .addSubCommand(::DeleteCommand)
             .addSubCommand(::TransferCommand)
+        hook(commandHandler)
     }
 
     protected abstract fun hook(commandHandler: CommandHandler);

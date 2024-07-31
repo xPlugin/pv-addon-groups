@@ -8,9 +8,12 @@ plugins {
 dependencies {
     compileOnly(project(":proxy"))
     compileOnly(project(":server"))
-
     compileOnly("su.plo.voice.api:server:$plasmoVoiceVersion")
     compileOnly("su.plo.voice.api:proxy:$plasmoVoiceVersion")
+
+    shadow("dev.simplix:protocolize-bungeecord:2.4.1")
+    shadow("dev.simplix:protocolize-velocity:2.4.1")
+    shadow("com.comphenix.protocol:ProtocolLib:5.1.0")
 }
 
 val platforms = setOf(

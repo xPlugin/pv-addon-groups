@@ -10,8 +10,9 @@ allprojects {
     repositories {
         mavenCentral()
         mavenLocal()
-
+        maven("https://mvn.exceptionflug.de/repository/exceptionflug-public/")
         maven("https://repo.plo.su")
+        maven("https://repo.dmulloy2.net/repository/public/")
     }
 }
 

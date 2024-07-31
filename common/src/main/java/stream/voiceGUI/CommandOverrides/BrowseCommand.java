@@ -83,6 +83,7 @@ public abstract class BrowseCommand extends SubCommand {
             MinecraftCommandSourceKt.printDivider(source);
         }
         source.sendMessage(getPagesInfo(page, chunks.size()));
+        inventoryHook(source, arguments, chunks);
     }
 
     private MinecraftTextComponent getPagesInfo(
@@ -136,5 +137,5 @@ public abstract class BrowseCommand extends SubCommand {
         return permission;
     }
 
-    public abstract void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments);
+    public abstract void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments, List<List<Group> chunked>);
 }
