@@ -38,4 +38,7 @@ tasks {
     jar {
         enabled = false
     }
+    build{
+        dependsOn(":jar:build")
+    }
 }

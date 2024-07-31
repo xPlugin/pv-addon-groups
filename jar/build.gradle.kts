@@ -21,18 +21,6 @@ val platforms = setOf(
 
 platforms.forEach { evaluationDependsOn(":${it.name}") }
 
-sourceSets {
-    main {
-        java {
-            srcDir(platforms.map { it.sourceSets.main.get().allJava.srcDirs }.flatten())
-        }
-
-        resources {
-            srcDir(platforms.map { it.sourceSets.main.get().resources.srcDirs }.flatten())
-        }
-    }
-}
-
 plasmoCrowdin {
     projectId = "plasmo-voice-addons"
     sourceFileName = "server/groups.toml"

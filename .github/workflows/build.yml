@@ -26,15 +26,11 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
 
     - name: Build Proxy
-      run: ./gradlew proxy:build
-
-    - name: Build Server
-      run: ./gradlew server:build
+      run: ./gradlew build
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: dev
-        path: |
-          */build/libs/*.jar
+        path: build/libs/pv-addon-groups-*.jar
         compression-level: 0
