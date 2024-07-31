@@ -7,6 +7,8 @@ import su.plo.voice.api.addon.annotation.Addon
 import su.plo.voice.api.event.EventSubscribe
 import su.plo.voice.api.proxy.event.config.VoiceProxyConfigReloadedEvent
 import su.plo.voice.groups.GroupsAddon
+import su.plo.voice.groups.command.CommandHandler
+import su.plo.voice.groups.proxy.command.ProxyBrowseCommand
 import su.plo.voice.groups.proxy.command.ProxyCommandHandler
 
 @Addon(id = "pv-addon-groups", scope = AddonLoaderScope.PROXY, version = "1.0.3", authors = ["KPidS"])
@@ -29,5 +31,9 @@ class ProxyGroupsAddon : GroupsAddon() {
 
     override fun createCommandHandler(minecraftServer: MinecraftCommonServerLib): ProxyCommandHandler {
         return ProxyCommandHandler(this, minecraftServer)
+    }
+
+    override fun hook(commandHandler: CommandHandler) {
+        commandHandler.addSubCommand(::ProxyBrowseCommand)
     }
 }

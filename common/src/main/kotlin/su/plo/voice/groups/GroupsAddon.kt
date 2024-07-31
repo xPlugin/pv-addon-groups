@@ -13,6 +13,7 @@ import su.plo.voice.api.PlasmoVoice
 import su.plo.voice.api.addon.AddonInitializer
 import su.plo.voice.api.server.PlasmoBaseVoiceServer
 import su.plo.voice.groups.command.CommandHandler
+import su.plo.voice.groups.command.SubCommand
 import su.plo.voice.groups.command.subcommand.*
 import su.plo.voice.groups.group.Group
 import java.io.File
@@ -126,7 +127,6 @@ abstract class GroupsAddon : AddonInitializer {
 
     protected fun addSubcommandsToCommandHandler(commandHandler: CommandHandler) {
         commandHandler
-            .addSubCommand(::BrowseCommand)
             .addSubCommand(::CreateCommand)
             .addSubCommand(::JoinCommand)
             .addSubCommand(::LeaveCommand)
@@ -137,6 +137,8 @@ abstract class GroupsAddon : AddonInitializer {
             .addSubCommand(::DeleteCommand)
             .addSubCommand(::TransferCommand)
     }
+
+    protected abstract fun hook(commandHandler: CommandHandler);
 
     @Throws(IOException::class)
     private fun getLanguageResource(resourcePath: String): InputStream? {

@@ -15,7 +15,7 @@ import su.plo.voice.groups.utils.extend.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrowseCommand extends SubCommand {
+public abstract class BrowseCommand extends SubCommand {
 
     private final List<Pair<String, PermissionDefault>> permission = new ArrayList<>(){{
         add(new Pair<>("browse", PermissionDefault.TRUE));
@@ -25,23 +25,22 @@ public class BrowseCommand extends SubCommand {
 
     private final CommandHandler handler;
 
-    public BrowseCommand(CommandHandler handler){
+    protected BrowseCommand(CommandHandler handler){
         super(handler);
         this.handler = handler;
     }
 
     @Override
     public @NotNull List<String> suggest(@NotNull MinecraftCommandSource source, String[] arguments) {
-
         if (arguments.length == 2) {
             return List.of(handler.getTranslationByKey("pv.addon.groups.arg.page", source));
         }
 
         return new ArrayList<>();
     }
+
     @Override
     public void execute(@NotNull MinecraftCommandSource source, String @NotNull [] arguments) {
-
         if (MinecraftCommandSourceKt.hasAddonPermission(source, "browse")) return;
 
         var page = Integer.parseInt(arguments[1]);
@@ -136,4 +135,6 @@ public class BrowseCommand extends SubCommand {
     public List<Pair<String, PermissionDefault>> getPermissions() {
         return permission;
     }
+
+    public abstract void inventoryHook(@NotNull MinecraftCommandSource source, String @NotNull [] arguments);
 }
